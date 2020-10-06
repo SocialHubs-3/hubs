@@ -301,7 +301,8 @@ export default class SceneEntryManager {
             //orientation: 1
           });
         });
-      }
+        return entity;
+      };
     }
     else {
         const offset = { x: 0, y: 0, z: 0 };
@@ -322,10 +323,9 @@ export default class SceneEntryManager {
             orientation: or
           });
         });
-      }
+        return entity;
+      };
     }
-      return entity;
-    };
 
     const spawnMediaOnPlayerHead = (src, contentOrigin) => {
       // TODO: Code this
