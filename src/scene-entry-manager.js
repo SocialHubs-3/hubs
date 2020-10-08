@@ -280,52 +280,47 @@ export default class SceneEntryManager {
       ? defaultRoomId
       : document.location.pathname.substring(1).split("/")[0]);
     //only make absolute offset spawning media available in the movie room
-    if(hubId === "LCx3m9r") {
-      const offset = { x: 2.5, y: 6.5, z: 11 };
-      const spawnMediaInfrontOfPlayer = (src, contentOrigin) => {
-        if (!this.hubChannel.can("spawn_and_move_media")) return;
-        const { entity, orientation } = addMedia(
-          src,
-          "#interactable-media",
-          contentOrigin,
-          null,
-          !(src instanceof MediaStream),
-          true
-        );
-        entity.object3D.scale.set(20, 20, 20);
-        orientation.then(or => {
-          entity.setAttribute("offset-absolute", {
-            target: "#avatar-pov-node",
-            offset: offset,
-            //hard coding in rotation
-            //orientation: 1
-          });
+    let isMovieRoom = (hubId === "LCx3m9r");
+    const offset = isMovieRoom ? { x: 2.5, y: 6.5, z: 11 } : { x: 0, y: 0, z: -0.1 };
+    const spawnMediaInfrontOfPlayer = isMovieRoom ? (src, contentOrigin) => {
+      if (!this.hubChannel.can("spawn_and_move_media")) return;
+      const { entity, orientation } = addMedia(
+        src,
+        "#interactable-media",
+        contentOrigin,
+        null,
+        !(src instanceof MediaStream),
+        true
+      );
+      entity.object3D.scale.set(20, 20, 20);
+      orientation.then(or => {
+        entity.setAttribute("offset-absolute", {
+          target: "#avatar-pov-node",
+          offset: offset,
+          //hard coding in rotation
+          //orientation: 1
         });
-        return entity;
-      };
-    }
-    else {
-        const offset = { x: 0, y: 0, z: 0 };
-      const spawnMediaInfrontOfPlayer = (src, contentOrigin) => {
-        if (!this.hubChannel.can("spawn_and_move_media")) return;
-        const { entity, orientation } = addMedia(
-          src,
-          "#interactable-media",
-          contentOrigin,
-          null,
-          !(src instanceof MediaStream),
-          true
-        );
-        orientation.then(or => {
-          entity.setAttribute("offset-relative-to", {
-            target: "#avatar-pov-node",
-            offset: offset,
-            orientation: or
-          });
+      });
+      return entity;
+    } : (src, contentOrigin) => {
+      if (!this.hubChannel.can("spawn_and_move_media")) return;
+      const { entity, orientation } = addMedia(
+        src,
+        "#interactable-media",
+        contentOrigin,
+        null,
+        !(src instanceof MediaStream),
+        true
+      );
+      orientation.then(or => {
+        entity.setAttribute("offset-relative-to", {
+          target: "#avatar-pov-node",
+          offset: offset,
+          orientation: or
         });
-        return entity;
-      };
-    }
+      });
+      return entity;
+    };
 
     const spawnMediaOnPlayerHead = (src, contentOrigin) => {
       // TODO: Code this
