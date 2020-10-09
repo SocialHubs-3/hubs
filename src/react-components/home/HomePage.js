@@ -15,8 +15,9 @@ import { MediaGrid } from "./MediaGrid";
 import { RoomTile } from "./RoomTile";
 import styled from 'styled-components';
 
+
 const HomepageBanner = styled.div`
-  padding: 25vh 0;
+  padding: 20vh 0;
 
   display: flex;
   flex-direction: row;
@@ -25,7 +26,7 @@ const HomepageBanner = styled.div`
 `;
 
 const BannerTextWrapper = styled.div`
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -40,7 +41,7 @@ const BannerHeader = styled.div`
   color: #3A3A3A;
 
   font: Roboto;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 700;
   line-height: 85%;
 
@@ -54,12 +55,10 @@ const BannerSubheader = styled.div`
 `;
 
 const BannerImage = styled.img`
-  background-image: url("");
   background-size: contain;
   background-repeat: no-repeat;
 
-  max-width: 100%;
-  height: 400;
+  width: 50%;
 
   border-radius: 2px;
   border: 2px solid #9437FF;
@@ -74,16 +73,16 @@ const LandingButton = styled.a`
   font-size: 1.15rem;
 
   padding: 1rem 2rem;
-  box-shadow: 0px 3px 3px rgba(148, 55, 255, 0.5);
+  box-shadow: 0px 3px 3px rgba(148, 55, 255, 0.4);
 
   user-select: none;
   cursor: pointer;
 
+  transition: all 0.25s ease;
   text-decoration: none;
 
   &::hover {
     box-shadow: 0px 3px 3px rgba(148, 55, 255, 0.7);
-    transition-duration: 0.25s;
   }
 `;
 
