@@ -54,7 +54,7 @@ const BannerSubheader = styled.div`
 `;
 
 const BannerImage = styled.img`
-  background-image: url("../../assests/landing-page.jpg");
+  background-image: url("");
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -87,10 +87,22 @@ const LandingButton = styled.a`
   }
 `;
 
+const MediaGroupContainer = styled.div`
+  padding: 2rem;
+
+  background-color: rgb(148,55,255);
+  box-shadow: 0px 3px 3px rgba(0.1, 0.1, 0.1, 0.2);
+  border-radius: 15px;
+`;
+
 const RoomHeader = styled.div`
   color: white;
-  font-size: 2rem;
+  font: Roboto;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
+
+  margin-bottom: 2rem;
 `;
 
 
@@ -125,16 +137,8 @@ export function HomePage() {
     }
   }, []);
 
-  const canCreateRooms = !configs.feature("disable_room_creation") || auth.isAdmin;
 
-  const logoUrl = configs.image("logo");
-
-  const showDescription = featuredRooms.length === 0;
-
-  const logoStyles = classNames(styles.logoContainer, {
-    [styles.centerLogo]: !showDescription
-  });
-
+  const landingPage = configs.image("landing_page");
 
   return (
     <Page className={styles.homePage}>
@@ -150,24 +154,23 @@ export function HomePage() {
           <LandingButton href="mailto:steffenholm@gmail.com"> Request a Demo ⭢  </LandingButton>
         </BannerTextWrapper>
 
-        <BannerImage />
+        <BannerImage src={landingPage}/>
       </HomepageBanner>
 
 
       {featuredRooms.length > 0 && (
         <section className={styles.featuredRooms}>
-          <RoomHeader> Click a Room to Explore! </RoomHeader>
-          <MediaGrid>
-            { featuredRooms.map(room => <RoomTile key={room.id} room={room} />) }
-          </MediaGrid>
+          <MediaGroupContainer>
+            <RoomHeader> Click a Room to Explore!</RoomHeader>
+            <MediaGrid>
+              { featuredRooms.map(room => <RoomTile key={room.id} room={room} />) }
+            </MediaGrid>
+          </MediaGroupContainer>
         </section>
       )}
 
       <section>
         <div className={styles.secondaryLinks}>
-          <a href="/link">
-            <FormattedMessage id="home.have_code" />
-          </a>
           <div>
             <IfFeature name="show_discord_bot_link">
               <FormattedMessage id="home.add_to_discord_1" />
