@@ -1108,22 +1108,6 @@ class UIRoot extends Component {
         {!this.state.waitingOnAudio &&
           !this.props.entryDisallowed && (
             <div className={entryStyles.buttonContainer}>
-              {!isMobileVR && (
-                <button
-                  onClick={e => {
-                    e.preventDefault();
-                    this.attemptLink();
-                  }}
-                  className={classNames([entryStyles.secondaryActionButton, entryStyles.wideButton])}
-                >
-                  <FormattedMessage id="entry.device-medium" />
-                  <div className={entryStyles.buttonSubtitle}>
-                    <FormattedMessage
-                      id={isMobile ? "entry.device-subtitle-mobile" : "entry.device-subtitle-desktop"}
-                    />
-                  </div>
-                </button>
-              )}
               {configs.feature("enable_lobby_ghosts") ? (
                 <button
                   onClick={e => {
@@ -1229,17 +1213,6 @@ class UIRoot extends Component {
                 </div>
                 <FormattedMessage id="entry.checkingForDeviceAvailability" />
               </div>
-            )}
-            {this.props.availableVREntryTypes.cardboard !== VR_DEVICE_AVAILABILITY.no && (
-              <div className={entryStyles.secondary} onClick={this.enterVR}>
-                <FormattedMessage id="entry.cardboard" />
-              </div>
-            )}
-            {this.props.availableVREntryTypes.generic !== VR_DEVICE_AVAILABILITY.no && (
-              <GenericEntryButton secondary={true} onClick={this.enterVR} />
-            )}
-            {this.props.availableVREntryTypes.daydream === VR_DEVICE_AVAILABILITY.yes && (
-              <DaydreamEntryButton secondary={true} onClick={this.enterDaydream} subtitle={null} />
             )}
             {this.props.availableVREntryTypes.screen === VR_DEVICE_AVAILABILITY.yes && (
               <TwoDEntryButton autoFocus={true} onClick={this.enter2D} />

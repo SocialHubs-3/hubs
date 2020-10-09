@@ -105,6 +105,7 @@ const RoomHeader = styled.div`
 `;
 
 
+
 addLocaleData([...en]);
 
 export function HomePage() {
@@ -155,7 +156,6 @@ export function HomePage() {
 
         <BannerImage src={landingPage}/>
       </HomepageBanner>
-
 
       {featuredRooms.length > 0 && (
         <section className={styles.featuredRooms}>

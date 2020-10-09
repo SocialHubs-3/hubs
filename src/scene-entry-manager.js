@@ -272,9 +272,17 @@ export default class SceneEntryManager {
     this.hubChannel.unpin(networkId, fileId);
   };
 
+  //TODO: make this code modular by referencing a JSON with the room info created in the constructor
   _setupMedia = mediaStream => {
-    const offset = { x: 2.5, y: 6.5, z: 11 };
-    const spawnMediaInfrontOfPlayer = (src, contentOrigin) => {
+    const hubId =
+    qs.get("hub_id") ||
+    (document.location.pathname === "/" && defaultRoomId
+      ? defaultRoomId
+      : document.location.pathname.substring(1).split("/")[0]);
+    //only make absolute offset spawning media available in the movie room
+    let isMovieRoom = (hubId === "LCx3m9r");
+    const offset = isMovieRoom ? { x: 2.5, y: 6.5, z: 11 } : { x: 0, y: 0, z: -0.1 };
+    const spawnMediaInfrontOfPlayer = isMovieRoom ? (src, contentOrigin) => {
       if (!this.hubChannel.can("spawn_and_move_media")) return;
       const { entity, orientation } = addMedia(
         src,
@@ -293,7 +301,24 @@ export default class SceneEntryManager {
           //orientation: 1
         });
       });
-
+      return entity;
+    } : (src, contentOrigin) => {
+      if (!this.hubChannel.can("spawn_and_move_media")) return;
+      const { entity, orientation } = addMedia(
+        src,
+        "#interactable-media",
+        contentOrigin,
+        null,
+        !(src instanceof MediaStream),
+        true
+      );
+      orientation.then(or => {
+        entity.setAttribute("offset-relative-to", {
+          target: "#avatar-pov-node",
+          offset: offset,
+          orientation: or
+        });
+      });
       return entity;
     };
 
