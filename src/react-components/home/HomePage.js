@@ -54,7 +54,7 @@ const BannerSubheader = styled.div`
 `;
 
 const BannerImage = styled.img`
-  background-image: url("https://i.imgur.com/YxSZ5XN.png");
+  background-image: url("../../assests/landing-page.jpg");
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -85,6 +85,12 @@ const LandingButton = styled.a`
     box-shadow: 0px 3px 3px rgba(148, 55, 255, 0.7);
     transition-duration: 0.25s;
   }
+`;
+
+const RoomHeader = styled.div`
+  color: white;
+  font-size: 2rem;
+  text-align: center;
 `;
 
 
@@ -150,6 +156,7 @@ export function HomePage() {
 
       {featuredRooms.length > 0 && (
         <section className={styles.featuredRooms}>
+          <RoomHeader> </RoomHeader>
           <MediaGrid>
             { featuredRooms.map(room => <RoomTile key={room.id} room={room} />) }
           </MediaGrid>
