@@ -1,12 +1,9 @@
 @import '../../assets/stylesheets/shared';
 
 :local(.media-grid) {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 20px;
-  justify-items: center;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 2rem;
 
   & > * {
     margin: 8px;

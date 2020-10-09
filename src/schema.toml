@@ -51,6 +51,7 @@ images.app_icon = { category = "images", type = "file", name = "App Icon", descr
 images.app_thumbnail = { category = "images", type = "file", name = "App Thumbnail", description = "Thumbnail for app." }
 images.company_logo = { category = "images", type = "file", name = "Company Logo", description = "Company logo used across the app." }
 images.home_background = { category = "images", type = "file", name = "Home background", description = "Background image on the home page." }
+images.landing_page= { category = "images", type = "file", name = "Landing Page", description = "Landing page image ont he home screen." }
 
 images.editor_logo = { category = "images", type = "file", internal = "true" }
 

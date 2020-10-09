@@ -58,6 +58,10 @@
 }
 
 :local(.featured-rooms) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   background-color: var(--home-media-panel-background-color);
 }
@@ -81,7 +85,7 @@
     height: 24px;
   }
 
-  a { 
+  a {
     color: var(--home-header-link-color);
     margin-right: 4px;
     margin-left: 2px;
