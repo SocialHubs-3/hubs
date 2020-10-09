@@ -5,8 +5,6 @@ import classNames from "classnames";
 import configs from "../../utils/configs";
 import IfFeature from "../if-feature";
 import { Page } from "../layout/Page";
-import { CreateRoomButton } from "./CreateRoomButton";
-import { PWAButton } from "./PWAButton";
 import { useFavoriteRooms } from "./useFavoriteRooms";
 import { usePublicRooms } from "./usePublicRooms";
 import styles from "./HomePage.scss";
@@ -138,10 +136,10 @@ export function HomePage() {
       <HomepageBanner>
         <BannerTextWrapper>
           <BannerHeader>
-            Video Chat Shouldn't be Awkward
+            Video Chat Doesn’t Have to be Awkward
           </BannerHeader>
           <BannerSubheader>
-            We offer a web-based platform for group video chats in a fun 3D environment
+            SocialHubs is a 3D video chat platform for hanging out with your friends in these distant times. Schools and companies can keep their community strong with themed rooms, fun games, and icebreakers!
           </BannerSubheader>
           <LandingButton href="mailto:steffenholm@gmail.com"> Request a Demo ⭢  </LandingButton>
         </BannerTextWrapper>
