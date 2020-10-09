@@ -156,7 +156,7 @@ export function HomePage() {
 
       {featuredRooms.length > 0 && (
         <section className={styles.featuredRooms}>
-          <RoomHeader> </RoomHeader>
+          <RoomHeader> Click a Room to Explore! </RoomHeader>
           <MediaGrid>
             { featuredRooms.map(room => <RoomTile key={room.id} room={room} />) }
           </MediaGrid>
