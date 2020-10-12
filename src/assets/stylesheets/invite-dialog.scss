@@ -15,7 +15,7 @@
   color: $action-text-color;
   pointer-events: auto;
   z-index: 3;
-  
+
   a {
     color: $action-text-color;
     text-decoration: underline;
@@ -80,7 +80,7 @@
   }
 
   :local(.invite-button-lowered) {
-    margin-top: 50px;
+    /* margin-top: 50px; */
   }
 
   :local(.enter-button) {
@@ -133,8 +133,8 @@
 }
 
 :local(.attach-point) {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid $action-color;
