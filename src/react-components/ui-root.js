@@ -560,10 +560,10 @@ class UIRoot extends Component {
   performDirectEntryFlow = async enterInVR => {
     this.setState({ enterInVR, waitingOnAudio: true });
 
-    const hasGrantedMic = (await grantedMicLabels()).length > 0;
+    const hasGrantedMic = (/*await*/ grantedMicLabels()).length > 0;
 
     if (hasGrantedMic) {
-      await this.setMediaStreamToDefault();
+      /*await*/ this.setMediaStreamToDefault();
       this.beginOrSkipAudioSetup();
     } else {
       this.pushHistoryState("entry_step", "mic_grant");
@@ -573,7 +573,7 @@ class UIRoot extends Component {
   };
 
   enter2D = async () => {
-    await this.performDirectEntryFlow(false);
+    /*await*/ this.performDirectEntryFlow(false);
   };
 
   enterVR = async () => {
@@ -600,12 +600,12 @@ class UIRoot extends Component {
 
     // Try to fetch last used mic, if there was one.
     if (lastUsedMicDeviceId) {
-      hasAudio = await this.fetchAudioTrack({ audio: { deviceId: { ideal: lastUsedMicDeviceId } } });
+      hasAudio = /*await*/ this.fetchAudioTrack({ audio: { deviceId: { ideal: lastUsedMicDeviceId } } });
     } else {
-      hasAudio = await this.fetchAudioTrack({ audio: {} });
+      hasAudio = /*await*/ this.fetchAudioTrack({ audio: {} });
     }
 
-    await this.setupNewMediaStream();
+    /*await*/ this.setupNewMediaStream();
 
     return { hasAudio };
   };
