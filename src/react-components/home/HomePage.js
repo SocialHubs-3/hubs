@@ -138,7 +138,7 @@ export function HomePage() {
   }, []);
 
 
-  const landingPage = configs.image("editor_logo");
+  const landingPage = configs.image("landing_page");
 
   return (
     <Page className={styles.homePage}>
