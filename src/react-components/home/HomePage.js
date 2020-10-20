@@ -154,7 +154,7 @@ export function HomePage() {
           <LandingButton href="mailto:steffenholm@gmail.com"> Request a Demo ⭢  </LandingButton>
         </BannerTextWrapper>
 
-        <BannerImage src={landingPage}/>
+        <BannerImage src="https://teststack-assets-358f96a0.s3.amazonaws.com/hubs/assets/images/landing-page.jpg"/>
       </HomepageBanner>
 
       {featuredRooms.length > 0 && (
