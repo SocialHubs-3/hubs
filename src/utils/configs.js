@@ -75,9 +75,9 @@ if (isLocalDevelopment) {
   localDevImages = {
     logo: appLogo,
     company_logo: companyLogo,
-    editor_logo: sceneEditorLogo,
+    // editor_logo: sceneEditorLogo,
     home_background: homeHeroBackground,
-    landing_page: landingPage,
+    editor_logo: landingPage,
   };
 }
 
